@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @param array $fields has the keys: username, password, account_type
      * @return boolean
      */
-    public function scopeAuthenticate($query, $fields = [])
+    public static function scopeAuthenticate($query, $fields = [])
     {
         if(!Arr::has($fields, ['username', 'password', 'account_type'])) {
             throw Exception('Missing Fields');
