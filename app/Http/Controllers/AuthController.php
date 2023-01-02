@@ -27,7 +27,7 @@ class AuthController extends Controller
 
         Auth::login($user);
         $request->session()->regenerate();
-        return redirect('/home');
+        return redirect(route('dashboard'));
     }
 
     public function logout(Request $request)
@@ -37,7 +37,5 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login');
     }
-
-    
 
 }

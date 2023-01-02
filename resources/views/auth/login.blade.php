@@ -3,7 +3,7 @@
 <div class="container">
     <div class="vh-100 row justify-content-center align-items-center">
         <div class="card p-3 col-md-5">
-            <form action="/login" method="post">
+            <form action="{{route('authenticate')}}" method="post">
                 @csrf
                 <h4 class="text-center">Login User</h4>
 
