@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -25,15 +26,19 @@ class User extends Authenticatable
     public static function scopeAuthenticate($query, $fields = [])
     {
         if(!Arr::has($fields, ['username', 'password', 'account_type'])) {
-            throw Exception('Missing Fields');
+            throw \Exception('Missing Fields');
         }
 
-        $result = $query->where('username', $fields['username'])->where('password', bcrypt($fields['password']))->where('account_type', $fields['account_type']);
-        if(!$result) {
+        $user = $query->where('username', $fields['username'])->where('account_type', $fields['account_type'])->first();
+        if(!$user) {
+            return false;
+        }
+        
+        if(!Hash::check($fields['password'], $user->password)) {
             return false;
         }
 
-        return true;
+        return $user;
     }
 
     /**
