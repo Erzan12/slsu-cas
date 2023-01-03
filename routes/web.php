@@ -16,16 +16,38 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('guest')->group(function () {
+
+    /**
+     * TODO: Must be inside the controller
+     * So that in the future if we pass some data to this route
+     * it won't make the route messy
+     */
     Route::get('/', function () {
         return view('homepage');
     });
-    
-    Route::get('/login', [AuthController::class, 'index'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('authenticate');
+
+
+    /**
+     * controller function helps to group the routes
+     * and calling the controller once.
+     * Instead of keep on calling the controller.
+     */
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/login', 'index')->name('login');
+        Route::post('/login', 'login')->name('authenticate');
+    });
+
+
 });
 
 
 Route::middleware('auth')->group(function () {
+
+    /**
+     * TODO: Must be inside the controller
+     * So that in the future if we pass some data to this route
+     * it won't make the route messy
+     */
     Route::get('/home', function () {
         return view('dashboard');
     })->name('dashboard');
