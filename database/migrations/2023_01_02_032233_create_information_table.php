@@ -19,7 +19,7 @@ return new class extends Migration
             $table->smallInteger('account_type');
             $table->string('avatar');
             $table->string('first_name');
-            $table->string('middle_name');
+            $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->string('email');
             $table->smallInteger('gender');

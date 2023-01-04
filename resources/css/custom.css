@@ -1,3 +1,6 @@
+.content-container {
+  display: flex;
+}
 
 .image-wrapper {
     height: 100px;
