@@ -24,4 +24,19 @@ class Information extends Model
         'municipality',
         'province'
     ];
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'user_id', 'id');
+    }
+
+    public function specialist()
+    {
+        return $this->belongsTo(Specialist::class, 'user_id', 'id');
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'user_id', 'id');
+    }
 }

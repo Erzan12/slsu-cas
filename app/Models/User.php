@@ -68,4 +68,26 @@ class User extends Authenticatable
         return $this->belongsTo(Admin::class, 'user_id', 'id');
     }
     
+
+    public function fullName()
+    {
+        if($this->account_type == 1) {
+            return $this->admin->first_name .' '. $this->admin->last_name;
+        }else if($this->account_type == 2) {
+            $information = Information::where('user_id', $this->user_id)->where('account_type', $this->account_type)->first();
+            return $information->first_name .' '. $information->last_name;
+        }else if($this->account_type == 3) {
+            $information = Information::where('user_id', $this->user_id)->where('account_type', $this->account_type)->first();
+            return $information->first_name .' '.$information->last_name;
+        }
+    }
+
+    public function displayName()
+    {
+        if($this->account_type == 1) {
+            return $this->admin->display_name;
+        }
+
+        return $this->fullName();
+    }
 }

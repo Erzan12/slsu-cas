@@ -52,5 +52,5 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
     
-    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

@@ -14,3 +14,15 @@
     border-radius: 50%;
     object-fit: contain;
 }
+
+.navbar-dropmenu {
+  left: -10px !important;
+}
+
+.sidebar-wrapper {
+  background-color: rgb(32, 51, 84);
+  border-right-style: solid;
+  border-color: rgb(32, 51, 84);
+  height: calc(100vh - 56px);
+  width: 200px;
+}

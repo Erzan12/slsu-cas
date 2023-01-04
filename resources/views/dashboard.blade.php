@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+@extends('layouts.main')
+@section('contents')
 Dashboard
-<a href="/logout">Logout</a>
 @endsection
