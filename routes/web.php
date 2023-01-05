@@ -40,6 +40,7 @@ Route::middleware('guest')->group(function () {
     });
  
     Route::get('/register', [PatientController::class, 'index']);
+    Route::post('/register', [PatientController::class, 'store'])->name('patients.store');
 
 });
 

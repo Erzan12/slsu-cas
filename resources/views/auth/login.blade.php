@@ -31,7 +31,7 @@
                     </div>
                     <div class="d-grid">
                         <button class="btn btn-primary">Login</button>
-                        <a href="/register">No Account? Click Here</a>
+                        <a href="/register" class="text-center my-2">No Account? Click Here</a>
                     </div>
                 </form>
             </div>
