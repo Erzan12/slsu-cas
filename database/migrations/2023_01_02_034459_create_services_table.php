@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('image');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->default('No Description')->nullable();
             $table->timestamps();
         });
     }

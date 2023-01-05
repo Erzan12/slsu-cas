@@ -1,4 +1,6 @@
 @extends('layouts.main')
 @section('contents')
-Dashboard
+<div class="container">
+    Dashboard
+</div>
 @endsection

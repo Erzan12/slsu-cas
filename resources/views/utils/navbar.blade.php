@@ -1,13 +1,22 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-wrapper  @guest sticky-top @endguest">
+    <div class="@guest container @endguest @auth container-fluid @endauth">
+      @guest
+        <a class="navbar-brand" href="/">{{env('APP_NAME')}}</a>  
+        @endguest
+        
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          
+          @guest
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-primary px-5 text-light" aria-current="page" href="{{route('login')}}">Login</a>
+            </li>
+          @endguest
 
-      @auth
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          @auth
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
@@ -23,8 +32,8 @@
                 <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
               </ul>
             </li>
-          </ul>
-        </div>
-      @endauth
+          @endauth
+        </ul>
+      </div>
     </div>
   </nav>
