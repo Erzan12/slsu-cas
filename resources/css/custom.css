@@ -83,7 +83,7 @@ display: inline-block;
   overflow-x: hidden;
   overflow-y: scroll;
   height: calc(90vh - 120px);
-  
+  width: calc(100% - 50px);
 }
 
 .service-description {

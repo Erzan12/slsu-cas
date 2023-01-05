@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->smallInteger('account_type');
-            $table->string('avatar');
+            $table->string('avatar')->default('https://cdn-icons-png.flaticon.com/512/666/666201.png');
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
