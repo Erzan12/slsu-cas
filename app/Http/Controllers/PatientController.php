@@ -43,12 +43,12 @@ class PatientController extends Controller
         $data = $request->all();
 
         $patient=Patient::create(Arr::only($data,['id_number']));
-        $path='';
+        $filename = $request->id_number .".". $request->avatar->getClientOriginalExtension();
         if ($request->hasFile('avatar'))
         {
-            $path=Storage::putFileAs('public/patients/',$request->avatar, $request->id_number .".". $request->avatar->getClientOriginalExtension());
+            Storage::putFileAs('public/patients/',$request->avatar, $filename);
         }
-        $data['avatar']=$path;
+        $data['avatar']= '/storage/patients' . $request->id_number .".". $request->avatar->getClientOriginalExtension();
         $data['user_id'] = $patient->id;
         $data['account_type'] = 3;
         $information=Information::create(Arr::except($data, ['id_number']));

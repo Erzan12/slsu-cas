@@ -81,7 +81,7 @@ display: inline-block;
 
 .service-item-wrapper {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(90vh - 120px);
   width: calc(100% - 50px);
 }

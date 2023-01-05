@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Information>
@@ -17,7 +18,7 @@ class InformationFactory extends Factory
     public function definition()
     {
         return [
-            'avatar' => 'https://cdn-icons-png.flaticon.com/512/666/666201.png',
+            'avatar' => Storage::url('defaults/user.png'),
             'first_name' => $this->faker->firstName(),
             'middle_name' => '',
             'last_name' => $this->faker->lastName(),

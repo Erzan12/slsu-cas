@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('employee_id')->unique();
             $table->string('position');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
