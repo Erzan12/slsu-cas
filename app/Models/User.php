@@ -90,4 +90,17 @@ class User extends Authenticatable
 
         return $this->fullName();
     }
+
+    public function avatar()
+    {
+        if($this->account_type == 1) {
+            return $this->admin->avatar;
+        } else if($this->account_type == 2) {
+            $information = Information::where('user_id', $this->user_id)->where('account_type', $this->account_type)->first();
+            return $information->avatar;
+        }else if($this->account_type == 3) {
+            $information = Information::where('user_id', $this->user_id)->where('account_type', $this->account_type)->first();
+            return $information->avatar;
+        }
+    }
 }
