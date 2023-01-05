@@ -18,7 +18,10 @@
 
           @auth
           
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown d-flex justify-content-center align-items-center">
+              <div class="profile-wrapper rounded rounded-circle">
+                <img src="{{auth()->user()->avatar()}}" alt="">
+              </div>
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{auth()->user()->displayName()}}
               </a>
