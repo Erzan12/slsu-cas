@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class AdminSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $admin = Admin::create([
-            'avatar' => 'https://cdn-icons-png.flaticon.com/512/666/666201.png',
+            'avatar' => Storage::url('defaults/user.png'),
             'first_name' => 'SLSU',
             'last_name' => 'Clinic',
             'display_name' => 'System Administrator'

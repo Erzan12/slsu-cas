@@ -7,6 +7,7 @@ use App\Models\Specialist;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class SpecialistSeeder extends Seeder
 {
@@ -23,7 +24,7 @@ class SpecialistSeeder extends Seeder
             [
                 'employee_id' => '0001',
                 'position' => 'University Doctor',
-                'avatar' => 'https://cdn-icons-png.flaticon.com/512/666/666201.png',
+                'avatar' => Storage::url('specialists/doctor.jpg'),
                 'first_name' => 'Edmundo',
                 'last_name' => 'Villa',
                 'email' => 'edmundovilla@slsu.com',
@@ -36,7 +37,7 @@ class SpecialistSeeder extends Seeder
             [
                 'employee_id' => '0002',
                 'position' => 'Nurse II',
-                'avatar' => 'https://cdn-icons-png.flaticon.com/512/666/666201.png',
+                'avatar' => Storage::url('specialists/nurse.jpg'),
                 'first_name' => 'Maria Emelee',
                 'last_name' => 'Bascug',
                 'email' => 'mariaemeleebascug@slsu.com',
@@ -49,7 +50,7 @@ class SpecialistSeeder extends Seeder
             [
                 'employee_id' => '0003',
                 'position' => 'Nursing Attendant',
-                'avatar' => 'https://cdn-icons-png.flaticon.com/512/666/666201.png',
+                'avatar' => Storage::url('specialists/nurse_attendant.jpg'),
                 'first_name' => 'Hadassah',
                 'last_name' => 'Sablayan',
                 'email' => 'hadassahsablayan@slsu.com',

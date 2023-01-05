@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/', function () {
         return view('homepage');
     });
+    
 
 
     /**
@@ -36,7 +38,9 @@ Route::middleware('guest')->group(function () {
         Route::get('/login', 'index')->name('login');
         Route::post('/login', 'login')->name('authenticate');
     });
-
+ 
+    Route::get('/register', [PatientController::class, 'index']);
+    Route::post('/register', [PatientController::class, 'store'])->name('patients.store');
 
 });
 

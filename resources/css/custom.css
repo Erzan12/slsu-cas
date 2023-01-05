@@ -38,7 +38,19 @@
     border-radius: 50%;
     object-fit: contain;
 }
-
+.register-image {
+  top: -25px;
+  height: 100px;
+  width: 100px;
+border-radius: 50%;
+display: inline-block;
+}
+.register-image > img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: contain;
+}
 .navbar-wrapper {
   background-color: rgb(32, 51, 84);
 }
@@ -69,7 +81,7 @@
 
 .service-item-wrapper {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(90vh - 120px);
   width: calc(100% - 50px);
 }

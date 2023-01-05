@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 return new class extends Migration
 {
@@ -17,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->smallInteger('account_type');
-            $table->string('avatar')->default('https://cdn-icons-png.flaticon.com/512/666/666201.png');
+            $table->string('avatar')->default(Storage::url('defaults/user.png'));
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
