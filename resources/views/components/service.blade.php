@@ -4,7 +4,7 @@
             <h2>Services</h2>
             <p>What we can offer</p>
             <div class="service-item-wrapper">
-                <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
 
                     @foreach ($services as $service)
                         <div class="col">
