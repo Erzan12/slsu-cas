@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('content')
+@include('utils.navbar')
 <div class="container">
-    <div class="vh-100 row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center login-wrapper">
         <div class="col-md-6 col-lg-4 ">
             <div class="position-relative">
-                <div class="position-absolute top-10 start-50 translate-middle z-1 image-wrapper">
+                <div class="position-absolute start-50 translate-middle z-1 image-wrapper">
                     <img src="https://user.southernleyte.org.ph/files/slsu-logo.png" alt="">
                 </div>
             </div>
-            <div class="card form-wrapper">
+            <div class="card shadow form-wrapper">
                 <form action="{{route('authenticate')}}" method="post" class="p-3 mt-3">
                     @csrf
                     <h3 class="text-center mt-3">Login Patient</h3>
@@ -19,7 +20,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @enderror
-    
+                    
                     <div class="form-group my-2">
                         <label for="username">ID Number</label>
                         <input class="form-control" type="text" name="username" id="username">

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('barangay');
             $table->string('municipality');
             $table->string('province');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

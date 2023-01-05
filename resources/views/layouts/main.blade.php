@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    @yield('navbar')
-    <div class="content-container">
-        @yield('sidebar')
-        @yield('content')
+    @include('utils.navbar')
+    <div class="d-flex">
+        @include('utils.sidebar')
+        @yield('contents')
     </div>
 @endsection

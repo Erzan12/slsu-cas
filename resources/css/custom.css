@@ -1,13 +1,37 @@
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+
+.login-wrapper {
+  height: 90vh;
+}
+
 .content-container {
   display: flex;
 }
 
 .image-wrapper {
+  top: -5px;
     height: 100px;
     width: 100px;
   border-radius: 50%;
   display: inline-block;
 }
+
 .image-wrapper > img {
     height: 100px;
     width: 100px;
@@ -26,4 +50,46 @@ display: inline-block;
   width: 100px;
   border-radius: 50%;
   object-fit: contain;
+
+.navbar-wrapper {
+  background-color: rgb(32, 51, 84);
+}
+
+.navbar-dropmenu {
+  left: -10px !important;
+}
+
+.sidebar-wrapper {
+  background-color: rgb(32, 51, 84);
+  border-right-style: solid;
+  border-color: rgb(32, 51, 84);
+  height: calc(100vh - 56px);
+  width: 200px;
+}
+
+.bg-image {
+  background-size: cover;
+}
+
+.service-wrapper {
+  height: 90vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.service-item-wrapper {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: calc(90vh - 120px);
+  
+}
+
+.service-description {
+  height: 50px;
+  width: 300px;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
