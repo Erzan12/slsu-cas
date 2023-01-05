@@ -30,6 +30,7 @@
                     </div>
                     <div class="d-grid">
                         <button class="btn btn-primary">Login</button>
+                        <a href="/register">No Account? Click Here</a>
                     </div>
                 </form>
             </div>

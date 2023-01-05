@@ -14,3 +14,16 @@
     border-radius: 50%;
     object-fit: contain;
 }
+.register-image {
+  top: -25px;
+  height: 100px;
+  width: 100px;
+border-radius: 50%;
+display: inline-block;
+}
+.register-image > img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: contain;
+}
