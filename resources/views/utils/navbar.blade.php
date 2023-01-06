@@ -4,9 +4,14 @@
         <a class="navbar-brand" href="/">{{env('APP_NAME')}}</a>  
         @endguest
         
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      @guest
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      @endguest
+
+      <div class="d-lg-none" style="padding:20px;"></div>
+
       <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           
