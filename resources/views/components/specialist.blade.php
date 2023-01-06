@@ -11,8 +11,8 @@
                             <div class="card h-100">
                                 <img src="{{ asset($specialist->avatar) }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                <h5 class="card-title">{{ $specialist->first_name }} {{ $specialist->last_name }}</h5>
-                                <p class="card-text service-description">{{ $specialist->position }}</p>
+                                <h5 class="card-title text-center">{{ $specialist->first_name }} {{ $specialist->last_name }}</h5>
+                                <p class="card-text text-center">{{ $specialist->position }}</p>
                                 </div>
                             </div>
                         </div>

@@ -48,7 +48,7 @@ class PatientController extends Controller
         {
             Storage::putFileAs('public/patients/',$request->avatar, $filename);
         }
-        $data['avatar']= '/storage/patients' . $request->id_number .".". $request->avatar->getClientOriginalExtension();
+        $data['avatar']= '/storage/patients/' . $request->id_number .".". $request->avatar->getClientOriginalExtension();
         $data['user_id'] = $patient->id;
         $data['account_type'] = 3;
         $information=Information::create(Arr::except($data, ['id_number']));

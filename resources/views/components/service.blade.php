@@ -11,7 +11,7 @@
                             <div class="card h-100">
                                 <img src="{{ Storage::url($service->image) }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                <h5 class="card-title">{{ $service->name }}</h5>
+                                <h5 class="card-title text-center">{{ $service->name }}</h5>
                                 <p class="card-text service-description">{{ $service->description }}</p>
                                 </div>
                             </div>
