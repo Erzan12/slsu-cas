@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\SpecialistController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,11 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [PatientController::class, 'index']);
     Route::post('/register', [PatientController::class, 'store'])->name('patients.store');
 
+
+    Route::prefix('/admin')->group(function () {
+        Route::get('/', [AuthController::class, 'adminLogin']);
+        Route::post('/', [AuthController::class, 'adminAuthenticate'])->name('admin.authenticate');
+    });
 });
 
 
@@ -65,5 +71,13 @@ Route::middleware('auth')->group(function () {
      */
     Route::middleware('patient')->group(function () {
         Route::get('/appointment-history', [AppointmentController::class, 'patientHistory'])->name('appointment.patient-history');
+    });
+
+
+    /**
+     * NOTE: ADd here all route related to admin
+     */
+    Route::middleware('admin')->group(function () {
+        Route::get('/specialists', [SpecialistController::class, 'index'])->name('specialists.index');
     });
 });

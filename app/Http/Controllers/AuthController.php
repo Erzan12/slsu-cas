@@ -33,11 +33,34 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        $route = '/login';
+        if(auth()->user()->account_type != 3) {
+            $route = '/admin';
+        }
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+
+        return redirect($route);
     }
 
+    public function adminLogin()
+    {
+        return view('auth.admin-login');
+    }
+
+    public function adminAuthenticate(Request $request)
+    {
+        $credentials = $request->only(['username', 'password']);
+        if(!$user = Auth::attempt($credentials))
+        {
+            return back()->withErrors([
+                'error' => 'Invalid Credentials'
+            ]);
+        }
+
+        $request->session()->regenerate();
+        return redirect(route('dashboard'));
+    }
 
 }
