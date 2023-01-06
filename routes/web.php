@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Hash;
@@ -57,4 +58,12 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+    /**
+     * NOTE: Add here all route related to patient
+     */
+    Route::middleware('patient')->group(function () {
+        Route::get('/appointment-history', [AppointmentController::class, 'patientHistory'])->name('appointment.patient-history');
+    });
 });
