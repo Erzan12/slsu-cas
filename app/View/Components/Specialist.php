@@ -26,4 +26,12 @@ class Specialist extends Component
         $specialists = \App\Models\Specialist::join('information', 'information.user_id','=','specialists.id')->where('account_type', 2)->get();
         return view('components.specialist', ['specialists'=> $specialists]);
     }
+    public function edit()
+    {
+        $specialists = \App\Models\Specialist::join('information', 'information.user_id','=','specialists.id')->where('account_type', 2)->get();
+        return view('admins.edit-specialist',['specialists'=> $specialists]);
+    }
+    
+    
+    
 }

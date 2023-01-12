@@ -79,5 +79,8 @@ Route::middleware('auth')->group(function () {
      */
     Route::middleware('admin')->group(function () {
         Route::get('/specialists', [SpecialistController::class, 'index'])->name('specialists.index');
+        Route::get('/specialists/create', [SpecialistController::class, 'create'])->name('specialists.create');
+        Route::get('/specialists/{id}/edit', [SpecialistController::class, 'edit'])->name('specialists.edit');
+        Route::post('/specialists', [SpecialistController::class, 'store'])->name('specialists.store');
     });
 });
