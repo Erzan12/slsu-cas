@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SpecialistController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -79,5 +80,12 @@ Route::middleware('auth')->group(function () {
      */
     Route::middleware('admin')->group(function () {
         Route::get('/specialists', [SpecialistController::class, 'index'])->name('specialists.index');
+    });
+
+    /**
+     * NOTE: Add here all route related to specialist
+     */
+    Route::middleware('specialist')->group(function () {
+        Route::resource('schedules', ScheduleController::class);
     });
 });

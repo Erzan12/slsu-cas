@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('contents')
 <div class="container">
-    Dashboard
+    
+<x-admin-summary/>
 </div>
 @endsection

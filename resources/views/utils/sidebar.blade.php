@@ -16,9 +16,12 @@
 
         {{-- Add inside all the link related for admin --}}
         @if(auth()->user()->account_type == 1)
-            <a href="{{route('specialists.index')}}" class="side-link @if(request()->routeIs('specialists.index')) link-active @endif">Manage Specialist</a>
+            <a href="{{route('specialists.index')}}" class="side-link @if(request()->routeIs('specialists.*')) link-active @endif">Manage Specialist</a>
         @endif
 
-        <a href="#" class="side-link">Home</a>
+        {{-- Add inside all the link related for speciaslit --}}
+        @if(auth()->user()->account_type == 2)
+            <a href="{{route('schedules.index')}}" class="side-link @if(request()->routeIs('schedules.*')) link-active @endif">My Schedules</a>
+        @endif
     </nav>
 </div>

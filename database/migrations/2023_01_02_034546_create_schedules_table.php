@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('specialist_id');
             $table->time('time_start');
             $table->time('time_end');
-            $table->date('date');
+            $table->string('date');
             $table->smallInteger('flag')->default(0)->comment('0 - Active | 1 - Deactive');
             $table->timestamps();
         });
