@@ -10,7 +10,7 @@
                             <div class="card h-100">
                                 <img src="{{ asset('images/clinic.png') }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                <h5 class="card-title">Official Office</h5>
+                                <h5 class="card-title text-center">Official Office</h5>
                                 </div>
                             </div>
                         </div>      
@@ -19,7 +19,7 @@
                             <div class="card h-100">
                                 <img src="{{ asset('images/slsu.png') }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                <h5 class="card-title">Geolocation</h5>
+                                <h5 class="card-title text-center">Geolocation</h5>
                                 </div>
                             </div>
                         </div>   

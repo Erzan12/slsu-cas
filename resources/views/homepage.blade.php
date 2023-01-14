@@ -7,5 +7,6 @@
 <x-service/>
 <x-specialist/>
 <x-about/>
+<x-feedback/>
 
 @endsection

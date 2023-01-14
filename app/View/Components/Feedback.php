@@ -23,6 +23,9 @@ class Feedback extends Component
      */
     public function render()
     {
-        return view('components.feedback');
+        return view('components.feedback',[
+            'ratings' => \App\Models\Rating::inRandomOrder()->limit(5)->get()
+        ]);
+
     }
 }

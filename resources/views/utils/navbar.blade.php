@@ -22,7 +22,7 @@
           @endguest
 
           @auth
-          
+
             <li class="nav-item dropdown d-flex justify-content-center align-items-center">
               <div class="profile-wrapper rounded rounded-circle">
                 <img src="{{auth()->user()->avatar()}}" alt="" class="rounded-circle">
