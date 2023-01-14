@@ -1,17 +1,15 @@
-@extends('layouts.app')
-@section('content')
-@include('utils.navbar')
+
+@extends('layouts.main')
+@section('contents')
 
     <div class="row justify-content-center my-3">
         <div class="col-md-6 col-lg-10 p-8">
             <div class="d-flex justify-content-center">
-                <div class="register-image">
-                    <img src="https://user.southernleyte.org.ph/files/slsu-logo.png" alt="">
-                </div>
+                
             </div>
-            <h3 class="text-center mt-3">Register Patient</h3>
-            <div class="card form-wrapper">
-                <form action="{{route('patients.store')}}" method="post" class="mt-3 p-3" enctype="multipart/form-data">
+            <h3 class="text-left mt-3">Add Specialst</h3>
+            <div class="card form-wrapper p-2">
+               
                     @csrf
     
                     <h6 class="text mt-3">Basic Information</h6>
@@ -20,9 +18,9 @@
                         <input type="file" name="avatar" id="avatar" class="form-control" value="{{old('avatar')}}">
                     </div>
                     <div class="form-group my-2">
-                        <label for="id_number">ID Number</label><span class="text-danger">*
-                        <input class="form-control" type="text" name="id_number" id="email" value="{{old('id_number')}}">
-                        @error('id_number')
+                        <label for="employee_id">Employee ID Number</label><span class="text-danger">*
+                        <input class="form-control" type="text" name="employee_id" id="employee_id" value="{{old('id_number')}}">
+                        @error('employee_id')
                             <small class="text-danger">{{$message}}</small>
                         @enderror
                     </div>
@@ -113,7 +111,7 @@
                     </div>
                     
                     <div class="d-grid my-2">
-                        <button class="submit btn btn-primary">Register</button>
+                        <button class="submit btn btn-primary">Add Specialist</button>
                     </div>
                 </form>
             </div>

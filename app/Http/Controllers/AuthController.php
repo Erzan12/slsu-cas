@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -25,25 +24,12 @@ class AuthController extends Controller
                 'error' => 'Invalid Credentials'
             ]);
         }
-
+        
         Auth::login($user);
         $request->session()->regenerate();
         return redirect(route('dashboard'));
+        
     }
-
-    public function logout(Request $request)
-    {
-        $route = '/login';
-        if(auth()->user()->account_type != 3) {
-            $route = '/admin';
-        }
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect($route);
-    }
-
     public function adminLogin()
     {
         return view('auth.admin-login');
@@ -63,4 +49,17 @@ class AuthController extends Controller
         return redirect(route('dashboard'));
     }
 
+
+
+    public function logout(Request $request)
+    {
+        $route = '/login';
+        if(auth()->user()->account_type != 3) {
+            $route = '/admin';
+        }
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
+    }
 }
