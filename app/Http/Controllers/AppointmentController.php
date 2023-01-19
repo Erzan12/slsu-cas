@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\StatusHelper;
+use App\Models\Information;
+use App\Models\Patient;
 use App\Models\Schedule;
+use App\Models\Service;
+use App\Services\MailerService;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
 
@@ -51,6 +55,13 @@ class AppointmentController extends Controller
         return view('patients.appointments.index', compact('appointments'));
     }
 
+    public function show($id)
+    {
+        $appointment = Appointment::with(['finding', 'rating', 'schedule'])->find($id);
+        $service = Service::find($appointment->schedule->service_id);
+        return view('patients.appointments.show', compact('appointment', 'service'));
+    }
+
     public function create()
     {
         return view('patients.appointments.create');
@@ -76,6 +87,8 @@ class AppointmentController extends Controller
             'status' => 1
         ]);
 
+        $patient = Information::where('user_id', $appointment->patient_id)->where('account_type', 3)->first();
+        MailerService::send($patient->getFullName(), $patient->email, 2);
         return back()->with('success', 'Appointment successfully approved!');
     }
 
@@ -85,6 +98,9 @@ class AppointmentController extends Controller
         $appointment->update([
             'status' => 4
         ]);
+
+        $patient = Information::where('user_id', $appointment->patient_id)->where('account_type', 3)->first();
+        MailerService::send($patient->getFullName(), $patient->email, 3);
 
         $schedule = Schedule::find($appointment->schedule_id);
         $schedule->update([

@@ -4,9 +4,11 @@ namespace App\Http\Livewire\Appointments;
 
 use App\Models\Appointment;
 use App\Models\Information;
+use App\Models\Patient;
 use App\Models\Schedule;
 use App\Models\Service;
 use App\Models\Specialist;
+use App\Services\MailerService;
 use Illuminate\Support\Carbon;
 use Livewire\Component;
 
@@ -104,6 +106,9 @@ class Create extends Component
             'contact_number' => $this->contact_number,
             'address' => $this->address,
         ]);
+
+        $user = Information::where('user_id', auth()->user()->user_id)->where('account_type', 3)->first();
+        MailerService::send($user->getFullName(), $user->email, 1);
 
         redirect(route('appointments.index'))->with('success', 'Successfully set appointment!');
     }

@@ -13,4 +13,9 @@ class Finding extends Model
         'appointment_id',
         'description'
     ];
+
+    public function appointment()
+    {
+        return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
+    }
 }

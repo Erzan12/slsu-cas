@@ -7,6 +7,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SpecialistController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -93,6 +94,8 @@ Route::middleware('auth')->group(function () {
         Route::put('/specialists/{id}', [SpecialistController::class, 'update'])->name('specialists.update');
         Route::delete('/specialist/{id}', [SpecialistController::class, 'delete'])->name('specialists.delete');
         Route::get('/specialist/{id}/restore', [SpecialistController::class, 'restore'])->name('specialists.restore');
+        Route::get('/patients', [PatientController::class, 'list'])->name('patients.list');
+        Route::resource('services', ServiceController::class);
     });
 
     /**
@@ -111,5 +114,6 @@ Route::middleware('auth')->group(function () {
      */
     Route::middleware(['patientSpecialist'])->group(function() {
         Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+        Route::get('/appointments/{id}', [AppointmentController::class, 'show'])->name('appointments.show');
     });
 });

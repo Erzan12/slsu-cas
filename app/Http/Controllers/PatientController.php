@@ -64,4 +64,10 @@ class PatientController extends Controller
         return redirect(route('dashboard'));
 
     }
+
+    public function list()
+    {
+        $patients = Patient::leftJoin('information', 'information.user_id', '=', 'patients.id')->where('information.account_type', 3)->get();
+        return view('admins.patients.index', compact('patients'));
+    }
 }

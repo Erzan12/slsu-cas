@@ -1,0 +1,133 @@
+@extends('layouts.main')
+@section('contents')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8 card shadow p-2">
+            <div class="group-head my-2">
+                <h4>Appointment Details</h4>
+                <hr>
+                <div class="mx-3">
+                    <div class="group">
+                        <p><b>Service Name</b>:</p>
+                        <p>{{$service->name}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Service Description</b>:</p>
+                        <p>{{$service->description == '' ? 'No Description' : $service->description}}</p>
+                    </div>
+                    
+                    <div class="group">
+                        <p><b>Appointment Date</b>: </p>
+                        <p>{{$appointment->schedule->date}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Appointment Time</b>:</p>
+                        <p><small class="p-2"><b>Start</b>:  {{$appointment->schedule->time_start}}</small></p>
+                        <p><small class="p-2"><b>End</b>:  {{$appointment->schedule->time_end}}</small></p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="group-head my-3">
+                <h4>Patient Details</h4>
+                <hr>
+                <div class="mx-3">
+                    <div class="group">
+                        <p><b>First Name</b>:</p>
+                        <p>{{$appointment->first_name}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Last Name</b>:</p>
+                        <p>{{$appointment->last_name}}</p>
+                    </div>
+                    
+                    <div class="group">
+                        <p><b>Email Address</b>:</p>
+                        <p>{{$appointment->email}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Gender</b>:</p>
+                        <p>{{ App\Helpers\GenderHelper::prettyGender($appointment->gender)}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Contact Number</b>:</p>
+                        <p>{{$appointment->contact_number}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Current Address</b>:</p>
+                        <p>{{$appointment->address}}</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="group-head my-3">
+                <h4>Finding Details</h4>
+                <hr>
+                <div class="mx-3">
+                    <div class="group">
+                        <p><b>Description</b>:</p>
+                        <p>{{$appointment->finding->description}}</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="group-head my-3">
+                <h4>Rating Details</h4>
+                <hr>
+                <div class="mx-3">
+                    <div class="group">
+                        <p><b>Responsiveness</b>:</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->responsiveness) }}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Reliability</b>:</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->reliability)}}</p>
+                    </div>
+                    
+                    <div class="group">
+                        <p><b>Access and Facility</b>:</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->access_and_facility)}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Costs</b>:</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->costs)}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Integrity</b>:</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->integrity)}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Communication</b>:</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->communication)}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Assurance</b>:</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->assurance)}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Outcome</b>:</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->outcome)}}</p>
+                    </div>
+        
+                    <div class="group">
+                        <p><b>Suggestions</b>:</p>
+                        <p>{{ $appointment->rating->suggestions}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

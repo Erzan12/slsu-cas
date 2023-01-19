@@ -16,8 +16,15 @@ return new class extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('appointment_id');
-            $table->smallInteger('rate');
-            $table->text('description')->nullable();
+            $table->smallInteger('responsiveness');
+            $table->smallInteger('reliability');
+            $table->smallInteger('access_and_facility');
+            $table->smallInteger('costs');
+            $table->smallInteger('integrity');
+            $table->smallInteger('communication');
+            $table->smallInteger('assurance');
+            $table->smallInteger('outcome');
+            $table->text('suggestion')->nullable();
             $table->timestamps();
         });
     }

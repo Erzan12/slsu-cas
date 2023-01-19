@@ -11,7 +11,19 @@ class Rating extends Model
 
     protected $fillable = [
         'appointment_id',
-        'rate',
-        'description'
+        'responsiveness',
+        'reliability',
+        'access_and_facility',
+        'costs',
+        'integrity',
+        'communication',
+        'assurance',
+        'outcome',
+        'suggestions'
     ];
+
+    public function appointment()
+    {
+        return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
+    }
 }

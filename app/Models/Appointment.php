@@ -31,4 +31,19 @@ class Appointment extends Model
         ];
         return $status[$this->status];
     }
+
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class, 'schedule_id', 'id');
+    }
+
+    public function finding()
+    {
+        return $this->hasOne(Finding::class, 'appointment_id', 'id');
+    }
+
+    public function rating()
+    {
+        return $this->hasOne(Rating::class, 'appointment_id', 'id');
+    }
 }

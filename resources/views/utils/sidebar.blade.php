@@ -17,6 +17,8 @@
             {{-- Add inside all the link related for admin --}}
             @if(auth()->user()->account_type == 1)
                 <a href="{{route('specialists.index')}}" class="side-link @if(request()->routeIs('specialists.*')) link-active @endif">Manage Specialist</a>
+                <a href="{{route('patients.list')}}" class="side-link @if(request()->routeIs('patients.list')) link-active @endif">Manage Patients</a>
+                <a href="{{route('services.index')}}" class="side-link @if(request()->routeIs('services.*')) link-active @endif">Manage Services</a>
             @endif
 
             {{-- Add inside all the link related for speciaslit --}}
