@@ -7,18 +7,14 @@
             <form action="{{route('schedules.store')}}" method="post">
                 @csrf
                 <div class="form-group my-2">
-                    <label for="service">Service Type</label>
-                    <select name="service" id="service" class="form-select my-2">
+                    <label for="service_id">Service Type</label>
+                    <select name="service_id" id="service_id" class="form-select my-2">
                         <option value="" selected>Please select one</option>
                         @foreach ($services as $service)
-                            @if (old('service'))
-                            <option value="{{$service->id}}" selected>{{$service->name}}</option>    
-                            @else
-                                <option value="{{$service->id}}">{{$service->name}}</option>
-                            @endif
+                            <option value="{{$service->id}}" @selected(old('service_id') == $service->id)>{{$service->name}}</option>
                         @endforeach
                     </select>
-                    @error('service')
+                    @error('service_id')
                         <small class="text-danger">{{$message}}</small>
                     @enderror
                 </div>
@@ -55,4 +51,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    const today = new Date().toISOString().split("T")[0]
+    const datepicker = document.getElementById('date');
+    datepicker.min =today
+</script>
+
 @endsection

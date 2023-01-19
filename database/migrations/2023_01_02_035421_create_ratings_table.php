@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('appointment_id');
             $table->smallInteger('rate');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

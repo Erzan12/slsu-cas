@@ -39,4 +39,14 @@ class Information extends Model
     {
         return $this->belongsTo(Admin::class, 'user_id', 'id');
     }
+
+    public function getFullName()
+    {
+        return $this->first_name . " " . $this->last_name;
+    }
+
+    public function getFullAddress()
+    {
+        return "$this->barangay, $this->municipality, $this->province";
+    }
 }

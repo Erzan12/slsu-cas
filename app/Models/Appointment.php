@@ -12,6 +12,23 @@ class Appointment extends Model
     protected $fillable = [
         'patient_id',
         'schedule_id',
-        'status'
+        'status',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'email',
+        'gender',
+        'contact_number',
+        'address'
     ];
+
+    public function prettyStatus()
+    {
+        $status = [
+            'Pending',
+            'Accepted',
+            'To be rate'
+        ];
+        return $status[$this->status];
+    }
 }

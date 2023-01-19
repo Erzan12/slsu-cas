@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FindingController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SpecialistController;
 use Illuminate\Support\Facades\Hash;
@@ -65,13 +68,17 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
+    Route::get('/profile/information', [ProfileController::class, 'information'])->name('profile.information');
+    Route::put('/profile/information', [ProfileController::class, 'update'])->name('profile.update');
 
     /**
      * NOTE: Add here all route related to patient
      */
     Route::middleware('patient')->group(function () {
-        Route::get('/appointment-history', [AppointmentController::class, 'patientHistory'])->name('appointment.patient-history');
+        Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
+        Route::delete('/appointments/{id}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
+        Route::get('/ratings/{id}', [RatingController::class, 'create'])->name('ratings.create');
+        Route::post('/ratings/{id}', [RatingController::class, 'store'])->name('ratings.store');
     });
 
 
@@ -83,6 +90,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/specialists/create', [SpecialistController::class, 'create'])->name('specialists.create');
         Route::get('/specialists/{id}/edit', [SpecialistController::class, 'edit'])->name('specialists.edit');
         Route::post('/specialists', [SpecialistController::class, 'store'])->name('specialists.store');
+        Route::put('/specialists/{id}', [SpecialistController::class, 'update'])->name('specialists.update');
+        Route::delete('/specialist/{id}', [SpecialistController::class, 'delete'])->name('specialists.delete');
+        Route::get('/specialist/{id}/restore', [SpecialistController::class, 'restore'])->name('specialists.restore');
     });
 
     /**
@@ -90,5 +100,16 @@ Route::middleware('auth')->group(function () {
      */
     Route::middleware('specialist')->group(function () {
         Route::resource('schedules', ScheduleController::class);
+        Route::get('/appointments/{id}/reject', [AppointmentController::class, 'reject'])->name('appointments.reject');
+        Route::get('/appointments/{id}/approve', [AppointmentController::class, 'approve'])->name('appointments.approve');
+        Route::get('/findings/{id}', [FindingController::class, 'create'])->name('findings.create');
+        Route::post('/findings/{id}', [FindingController::class, 'store'])->name('findings.store');
+    });
+
+    /**
+     * Add here all route that can be use for patient and specialist
+     */
+    Route::middleware(['patientSpecialist'])->group(function() {
+        Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
     });
 });

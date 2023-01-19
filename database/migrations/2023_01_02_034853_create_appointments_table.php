@@ -17,7 +17,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('schedule_id');
-            $table->smallInteger('status')->comment('0 - Pending | 1 - Approved | 2 - Rating')->default(0);
+            $table->smallInteger('status')->comment('0 - Pending | 1 - Approved | 2 - Rating | 3 - Done | 4 - Reject')->default(0);
+            $table->string('first_name');
+            $table->string('middle_name')->nullable();
+            $table->string('last_name');
+            $table->string('email');
+            $table->smallInteger('gender');
+            $table->string('contact_number');
+            $table->string('address');
             $table->timestamps();
         });
     }

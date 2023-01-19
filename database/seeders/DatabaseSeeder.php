@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             SpecialistSeeder::class,
             ServiceSeeder::class,
             DummyPatientSeeder::class,
+            DummyScheduleSeeder::class,
         ]);
         
     }

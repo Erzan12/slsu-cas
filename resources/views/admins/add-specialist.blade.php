@@ -9,23 +9,28 @@
             </div>
             <h3 class="text-left mt-3">Add Specialst</h3>
             <div class="card form-wrapper p-2">
-               
+                <form action="{{route('specialists.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
-    
                     <h6 class="text mt-3">Basic Information</h6>
+                    <div class="form-group my-2">
+                        <label for="position">Position</label><span class="text-danger">*
+                        <input class="form-control" type="text" name="position" id="position" value="{{old('position')}}">
+                        @error('position')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
                     <div class="my-2 form-group">
                         <label for="address">Profile Picture:</label>
                         <input type="file" name="avatar" id="avatar" class="form-control" value="{{old('avatar')}}">
                     </div>
                     <div class="form-group my-2">
                         <label for="employee_id">Employee ID Number</label><span class="text-danger">*
-                        <input class="form-control" type="text" name="employee_id" id="employee_id" value="{{old('id_number')}}">
+                        <input class="form-control" type="text" name="employee_id" id="employee_id" value="{{old('employee_id')}}">
                         @error('employee_id')
                             <small class="text-danger">{{$message}}</small>
                         @enderror
                     </div>
-                <div class="row row-cols-1 row-cols-lg-3">
-                   
+                    <div class="row row-cols-1 row-cols-lg-3">
                     <div class="form-group col">
                         <label for="first_Name">First Name</label><span class="text-danger">*
                         <input class="form-control" type="text" name="first_name" id="firstname"  value="{{old('first_name')}}">
@@ -45,8 +50,8 @@
                         @enderror
                     </div>
                     
-                </div>
-                <div class="form-group my-2">
+                    </div>
+                    <div class="form-group my-2">
                         <label for="contact_number">Contact Number</label><span class="text-danger">*
                         <input class="form-control" type="number" name="contact_number" id="contact_number"  value="{{old('contact_number')}}">
                         @error('contact_number')
@@ -62,26 +67,22 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                  <label for="gender"
-                    >Gender <span class="text-danger">*</span></label
-                  >
-                  <select
-                    name="gender"
-                    id="gender"
-                    class="form-select"
-                  >
-                    <option value="">Select one</option>
-                    <option value="1">Male</option>
-                    <option value="2">Female</option>
-                  </select>
-                  @error('gender')
+                        <label for="gender"
+                            >Gender <span class="text-danger">*</span></label
+                        >
+                        <select name="gender" id="gender" class="form-select">
+                            <option value="" selected>Select one</option>
+                            <option value="1" @selected(old('gender') == 1)>Male</option>
+                            <option value="2" @selected(old('gender') == 2)>Female</option>
+                            </select>
+                        @error('gender')
                             <small class="text-danger">{{$message}}</small>
                         @enderror
-                </div>
+                    </div>
             
-                <h6 class="text mt-3">Address</h6>
+                    <h6 class="text mt-3">Address</h6>
                     
-                <div class="form-group my-2">
+                    <div class="form-group my-2">
                         <label for="barangay">(Barangay)</label><span class="text-danger">*
                         <input class="form-control" type="text" name="barangay" id="barangay"  value="{{old('barangay')}}">
                         @error('barangay')

@@ -14,9 +14,6 @@
         <div class="card shadow">
             <div class="card-body d-flex justify-content-center align-items-end gap-1">
                 <h2>{{$pendingAppointments}}</h2>
-                @if($appointments > 0 )
-                    <h6>/ {{$appointments}}</h6>
-                @endif
             </div>
             <div class="card-footer text-break">
                 Number of Pending  Appointments
