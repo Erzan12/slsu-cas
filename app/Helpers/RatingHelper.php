@@ -16,8 +16,10 @@ class RatingHelper
                 return 'Neither Satisfied Nor Dissastified';
             case 4:
                 return 'Satisfied';
-            default:
+            case 5:
                 return 'Very Satisfied';
+            default:
+                return 'No Rating';
         }
     }
 }

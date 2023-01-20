@@ -47,7 +47,7 @@ class Create extends Component
 
     public function updatedServiceId() 
     {
-        $this->schedules = Schedule::where('service_id', $this->service_id)->where('flag', 0)->where('date', '>=', now()->format('Y-m-d'))->with('service')->get();
+        $this->schedules = Schedule::where('service_id', $this->service_id)->where('flag', 0)->whereDate('date', '>=', now())->with('service')->get();
     }
 
     public function updatedScheduleId()

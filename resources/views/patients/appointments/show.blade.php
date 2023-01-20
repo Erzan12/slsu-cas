@@ -72,7 +72,7 @@
                 <div class="mx-3">
                     <div class="group">
                         <p><b>Description</b>:</p>
-                        <p>{{$appointment->finding->description}}</p>
+                        <p>{{$appointment->finding->description ?? 'No Description'}}</p>
                     </div>
                 </div>
             </div>
@@ -83,47 +83,47 @@
                 <div class="mx-3">
                     <div class="group">
                         <p><b>Responsiveness</b>:</p>
-                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->responsiveness) }}</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->responsiveness ?? 0)}}</p>
                     </div>
         
                     <div class="group">
                         <p><b>Reliability</b>:</p>
-                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->reliability)}}</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->reliability ?? 0)}}</p>
                     </div>
                     
                     <div class="group">
                         <p><b>Access and Facility</b>:</p>
-                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->access_and_facility)}}</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->access_and_facility ?? 0)}}</p>
                     </div>
         
                     <div class="group">
                         <p><b>Costs</b>:</p>
-                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->costs)}}</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->costs ?? 0)}}</p>
                     </div>
         
                     <div class="group">
                         <p><b>Integrity</b>:</p>
-                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->integrity)}}</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->integrity ?? 0)}}</p>
                     </div>
         
                     <div class="group">
                         <p><b>Communication</b>:</p>
-                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->communication)}}</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->communication ?? 0)}}</p>
                     </div>
         
                     <div class="group">
                         <p><b>Assurance</b>:</p>
-                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->assurance)}}</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->assurance ?? 0)}}</p>
                     </div>
         
                     <div class="group">
                         <p><b>Outcome</b>:</p>
-                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->outcome)}}</p>
+                        <p>{{ App\Helpers\RatingHelper::prettyRate($appointment->rating->outcome ?? 0)}}</p>
                     </div>
         
                     <div class="group">
                         <p><b>Suggestions</b>:</p>
-                        <p>{{ $appointment->rating->suggestions}}</p>
+                        <p>{{ $appointment->rating->suggestions ?? ''}}</p>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,6 @@ class Schedule extends Model
         'flag'
     ];
 
-    protected $dob = 'date';
 
     public function service()
     {
