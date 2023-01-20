@@ -108,7 +108,7 @@ class Create extends Component
         ]);
 
         $user = Information::where('user_id', auth()->user()->user_id)->where('account_type', 3)->first();
-        MailerService::send($user->getFullName(), $user->email, 1);
+        MailerService::send($user->getFullName(), $this->email, 1);
 
         redirect(route('appointments.index'))->with('success', 'Successfully set appointment!');
     }
