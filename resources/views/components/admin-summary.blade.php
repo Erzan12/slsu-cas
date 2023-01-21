@@ -47,7 +47,7 @@
                     Numbers of Appointments
                 </small>
             </div>
-            <a href="{{route('services.index')}}" class="stretched-link"></a>
+            <a href="{{route('appointments.index')}}" class="stretched-link"></a>
         </div>
     </div>
 </div>

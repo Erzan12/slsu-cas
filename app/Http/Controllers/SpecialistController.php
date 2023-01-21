@@ -158,9 +158,9 @@ class SpecialistController extends Controller
         $information = Information::where('user_id', $id)->where('account_type', 2)->withTrashed()->first();
         $user = User::where('user_id', $id)->where('account_type', 2)->withTrashed()->first();
 
-        $specialist->delete();
-        $information->delete();
-        $user->delete();
+        $specialist->restore();
+        $information->restore();
+        $user->restore();
         return back()->with('success', 'User successfully restored!');
     }
 }

@@ -38,7 +38,7 @@
 
                 <div class="form-group my-2">
                     <label for="date">Date</label>
-                    <input type="date" name="date" id="date" class="form-control my-2" value="{{old('date')}}">
+                    <input type="text" name="date" id="date" class="form-control my-2" value="{{old('date')}}">
                     @error('date')
                         <small class="text-danger">{{$message}}</small>
                     @enderror
@@ -50,12 +50,19 @@
             </form>
         </div>
     </div>
+    <p id="dateToday" hidden>{{now()->format('m/d/Y')}}</p>
 </div>
 
-<script>
-    const today = new Date().toISOString().split("T")[0]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
+<script defer>
+    const today = document.getElementById('dateToday').innerText;
     const datepicker = document.getElementById('date');
-    datepicker.min =today
+
+    let datepickerJS = new Datepicker(datepicker, {
+        daysOfWeekDisabled: [0, 6],
+        minDate: today
+    }); 
 </script>
 
 @endsection
