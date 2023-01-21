@@ -79,7 +79,7 @@ class ScheduleController extends Controller
             'specialist_id'=> auth()->user()->user_id,
             'time_start' => Carbon::parse($request->time_start)->format('h:i'),
             'time_end' => Carbon::parse($request->time_end)->format('h:i'),
-            'date' => $request->date,
+            'date' => Carbon::parse($request->date)->format('Y-m-d'),
         ]);
 
         return redirect(route('schedules.index'))->with('success', 'New schedule has been added to database');
