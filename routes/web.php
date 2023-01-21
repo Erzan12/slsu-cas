@@ -68,6 +68,8 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
     
+    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profile/information', [ProfileController::class, 'information'])->name('profile.information');
     Route::put('/profile/information', [ProfileController::class, 'update'])->name('profile.update');
@@ -95,6 +97,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/specialist/{id}', [SpecialistController::class, 'delete'])->name('specialists.delete');
         Route::get('/specialist/{id}/restore', [SpecialistController::class, 'restore'])->name('specialists.restore');
         Route::get('/patients', [PatientController::class, 'list'])->name('patients.list');
+        Route::delete('/patients/{id}', [PatientController::class, 'delete'])->name('patients.delete');
+        Route::get('/patients/{id}', [PatientController::class, 'restore'])->name('patients.restore');
         Route::resource('services', ServiceController::class);
     });
 
@@ -113,7 +117,6 @@ Route::middleware('auth')->group(function () {
      * Add here all route that can be use for patient and specialist
      */
     Route::middleware(['patientSpecialist'])->group(function() {
-        Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
         Route::get('/appointments/{id}', [AppointmentController::class, 'show'])->name('appointments.show');
     });
 });

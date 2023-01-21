@@ -65,9 +65,50 @@ class PatientController extends Controller
 
     }
 
-    public function list()
+    public function delete($id)
     {
-        $patients = Patient::leftJoin('information', 'information.user_id', '=', 'patients.id')->where('information.account_type', 3)->get();
-        return view('admins.patients.index', compact('patients'));
+        $patient = Patient::find($id);
+        $user = User::where('user_id', $patient->id)->where('account_type', 3)->first();
+        $information = Information::where('user_id', $patient->id)->where('account_type', 3)->first();
+
+        $patient->delete();
+        $user->delete();
+        $information->delete();
+        return back()->with('success', 'Patient has been successfully deleted');
+    }
+
+    public function restore($id)
+    {
+        $patient = Patient::withTrashed()->find($id);
+        $user = User::where('user_id', $patient->id)->where('account_type', 3)->withTrashed()->first();
+        $information = Information::where('user_id', $patient->id)->where('account_type', 3)->withTrashed()->first();
+
+        $patient->restore();
+        $user->restore();
+        $information->restore();
+        return back()->with('success', 'Patient has been successfully restore');
+    }
+
+    public function list(Request $request)
+    {
+        $deleted = false;
+        $patients = Patient::join('information', 'information.user_id', '=', 'patients.id')->where('information.account_type', 3)
+            ->select([
+                'patients.id',
+                'id_number',
+                'avatar',
+                'first_name',
+                'last_name',
+                'patients.deleted_at'
+            ]);
+        
+        if($request->has('deleted') && $request->deleted) {
+            $deleted = true;
+            $patients = $patients->withTrashed();
+        }
+
+        $patients = $patients->get();
+
+        return view('admins.patients.index', compact('patients', 'deleted'));
     }
 }

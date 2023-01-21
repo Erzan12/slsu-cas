@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Appointment;
 use App\Models\Specialist;
 use App\Models\Patient;
 use App\Models\Service;
@@ -29,6 +30,7 @@ class AdminSummary extends Component
         $patients = Patient::count();
         $specialists = Specialist::count();
         $services = Service::count();
-        return view('components.admin-summary', compact('patients', 'specialists', 'services'));
+        $appointments = Appointment::count();
+        return view('components.admin-summary', compact('patients', 'specialists', 'services', 'appointments'));
     }
 }

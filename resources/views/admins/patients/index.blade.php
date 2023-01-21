@@ -13,19 +13,19 @@
                     </button>
                 </form> --}}
 
-                {{-- <div class="ms-auto d-flex gap-2">
+                <div class="ms-auto d-flex gap-2">
                     @if($deleted)
-                    <a href="{{route('specialists.index')}}" class="btn btn-danger">Without Deleted</a>
+                    <a href="{{route('patients.list')}}" class="btn btn-danger">Without Deleted</a>
                     @else
-                        <a href="{{route('specialists.index', ['deleted' => true])}}" class="btn btn-danger">With Deleted</a>
+                        <a href="{{route('patients.list', ['deleted' => true])}}" class="btn btn-danger">With Deleted</a>
                     @endif
-                    <a href="{{route('specialists.create')}}" class="btn btn-primary">
+                    {{-- <a href="{{route('specialists.create')}}" class="btn btn-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                         </svg>
                         New Specialist
-                    </a>
-                </div> --}}
+                    </a> --}}
+                </div>
             </div>
 
             <div class="schedules-lower">
@@ -53,13 +53,13 @@
                                 <td>{{$patient->first_name}}</td>
                                 <td>{{$patient->last_name}}</td>
                                 <td class="d-flex gap-2">
-                                    {{-- @if(!$patient->deleted_at) --}}
+                                    @if(!$patient->deleted_at)
                                     {{-- <a href="{{route('specialists.edit', ['id' => $patient->id])}}" class="btn btn-sm btn-warning">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                             <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                                         </svg>
                                     </a> --}}
-                                    <form action="{{ route('specialists.delete', ['id' => $patient->id]) }}" method="post">
+                                    <form action="{{ route('patients.delete', ['id' => $patient->id]) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-danger">
@@ -69,13 +69,13 @@
                                             </svg>
                                         </button>
                                     </form>
-                                    {{-- @else
-                                    <a href="{{route('specialists.restore', ['id' => $patient->id])}}" class="btn btn-sm btn-success" title="restore">
+                                    @else
+                                    <a href="{{route('patients.restore', ['id' => $patient->id])}}" class="btn btn-sm btn-success" title="restore">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-recycle" viewBox="0 0 16 16">
                                             <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"/>
                                         </svg>
                                     </a>
-                                    @endif --}}
+                                    @endif
                                 </td>
                             </tr>
                         @empty

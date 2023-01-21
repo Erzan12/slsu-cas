@@ -34,7 +34,7 @@ class AppointmentController extends Controller
 
         if($user->account_type == 2) {
             $appointments = $appointments->where('specialist_id', $user->user_id);
-        }else {
+        }elseif($user->account_type == 3) {
             $appointments = $appointments->where('patient_id', $user->user_id);
         }
 
