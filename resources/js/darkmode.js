@@ -22,6 +22,6 @@ function switchTheme(e) {
 toggleSwitch.addEventListener('click', switchTheme, false);
 //initially apply user's preference from their system settings
 if(window.matchMedia('(prefers-color-scheme: light)').matches){	
-    document.documentElement.setAttribute('data-bs-theme', localStorage.getItem('theme') ?? 'light');
+    document.documentElement.setAttribute('data-bs-theme', localStorage.getItem('theme') ?? 'dark');
     toggleSwitch.innerHTML = localStorage.getItem('theme') == 'light' ? sun : moon;
 }
