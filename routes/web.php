@@ -67,9 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('dashboard');
     })->name('dashboard');
-    
-    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
-    Route::get('/appointments/{id}', [AppointmentController::class, 'show'])->name('appointments.show');
+
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profile/information', [ProfileController::class, 'information'])->name('profile.information');
@@ -114,10 +112,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/findings/{id}', [FindingController::class, 'store'])->name('findings.store');
     });
 
-    /**
-     * Add here all route that can be use for patient and specialist
-     */
-    Route::middleware(['patientSpecialist'])->group(function() {
-        
-    });
+    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+    Route::get('/appointments/{id}', [AppointmentController::class, 'show'])->name('appointments.show');
 });
