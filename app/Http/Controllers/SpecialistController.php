@@ -142,25 +142,25 @@ class SpecialistController extends Controller
 
     public function delete($id)
     {
-        $specialist = Specialist::join('information', 'information.user_id','=','specialists.id')->where('account_type', 2)
-        ->select([
-            'specialists.id',
-            'employee_id',
-            'avatar',
-            'account_type',
-            'first_name',
-            'middle_name',
-            'last_name',
-            'position'
-        ])->find($id);
+        $specialist = Specialist::find($id);
+        $information = Information::where('user_id', $id)->where('account_type', 2)->first();
+        $user = User::where('user_id', $id)->where('account_type', 2)->first();
 
         $specialist->delete();
+        $information->delete();
+        $user->delete();
         return back()->with('success', 'Specialist successfully deleted!');
     }
 
     public function restore($id)
     {
-        $specialist = Specialist::withTrashed()->find($id)->restore();
+        $specialist = Specialist::withTrashed()->find($id);
+        $information = Information::where('user_id', $id)->where('account_type', 2)->withTrashed()->first();
+        $user = User::where('user_id', $id)->where('account_type', 2)->withTrashed()->first();
+
+        $specialist->delete();
+        $information->delete();
+        $user->delete();
         return back()->with('success', 'User successfully restored!');
     }
 }
