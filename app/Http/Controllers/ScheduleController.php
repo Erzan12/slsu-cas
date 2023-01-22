@@ -77,8 +77,8 @@ class ScheduleController extends Controller
         Schedule::create([
             'service_id' => $request->service_id,
             'specialist_id'=> auth()->user()->user_id,
-            'time_start' => Carbon::parse($request->time_start)->format('g:i A'),
-            'time_end' => Carbon::parse($request->time_end)->format('g:i A'),
+            'time_start' => Carbon::parse($request->time_start)->format('h:i'),
+            'time_end' => Carbon::parse($request->time_end)->format('h:i'),
             'date' => Carbon::parse($request->date)->format('Y-m-d'),
         ]);
 

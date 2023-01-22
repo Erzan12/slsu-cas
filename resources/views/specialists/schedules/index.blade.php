@@ -42,8 +42,8 @@
                         @forelse ($schedules as $schedule)
                             <tr>
                                 <td>{{$schedule->name}}</td>
-                                <td>{{$schedule->time_start}}</td>
-                                <td>{{$schedule->time_end}}</td>
+                                <td>{{ Carbon\Carbon::parse($schedule->time_start)->format('g:i A')}}</td>
+                                <td>{{ Carbon\Carbon::parse($schedule->time_end)->format('g:i A')}}</td>
                                 <td>{{$schedule->date}}</td>
                                 <td class="d-flex gap-2">
                                     <a href="{{route('schedules.edit', ['schedule' => $schedule->id])}}" class="btn btn-sm btn-warning">
