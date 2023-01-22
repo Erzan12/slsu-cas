@@ -47,8 +47,8 @@
                         @forelse ($appointments as $appointment)
                             <tr>
                                 <td>{{$appointment->name}}</td>
-                                <td>{{$appointment->time_start}}</td>
-                                <td>{{$appointment->time_end}}</td>
+                                <td>{{Carbon\Carbon::parse($appointment->time_start)->format('g:i A')}}</td>
+                                <td>{{Carbon\Carbon::parse($appointment->time_end)->format('g:i A')}}</td>
                                 <td>{{$appointment->date}}</td>
                                 <td>{{App\Helpers\StatusHelper::prettyStatus($appointment->status)}}</td>
                                 <td class="d-flex gap-2">

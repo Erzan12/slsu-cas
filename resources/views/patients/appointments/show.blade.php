@@ -24,8 +24,8 @@
         
                     <div class="group">
                         <p><b>Appointment Time</b>:</p>
-                        <p><small class="p-2"><b>Start</b>:  {{$appointment->schedule->time_start}}</small></p>
-                        <p><small class="p-2"><b>End</b>:  {{$appointment->schedule->time_end}}</small></p>
+                        <p><small class="p-2"><b>Start</b>:  {{Carbon\Carbon::parse($appointment->schedule->time_start)->format('g:i A')}}</small></p>
+                        <p><small class="p-2"><b>End</b>:  {{Carbon\Carbon::parse($appointment->schedule->time_end)->format('g:i A')}}</small></p>
                     </div>
                 </div>
             </div>
